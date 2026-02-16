@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -26,11 +26,11 @@ jobs:
       - name: Build with Gradle Wrapper
         run: ./gradlew build
 
-      - name: Debug: list all jars
+      - name: Debug list all jars
         run: find . -name "*.jar"
 
-      - name: Upload JAR artifacts (all modules)
+      - name: Upload JAR artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-jars
-          path: '**/build/libs/*.jar'
+          path: "**/build/libs/*.jar"
